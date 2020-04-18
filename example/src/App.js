@@ -1,10 +1,13 @@
 import React from 'react'
-
-import { ExampleComponent } from 'use-dialog'
-import 'use-dialog/dist/index.css'
+import { DialogProvider } from 'use-dialog'
+import Child from './child'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return (
+    <DialogProvider>
+      <Child />
+    </DialogProvider>
+  )
 }
 
 export default App
