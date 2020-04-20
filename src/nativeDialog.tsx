@@ -6,7 +6,7 @@ interface INativeDialogProps extends IDialogProps {
 }
 
 export const NativeDialog: React.ElementType<INativeDialogProps> = (props) => {
-  const { message, type, defaultText, onSubmit, onClose, open } = props
+  const { message, type, defaultText, onSubmit, onCancel, open } = props
 
   useEffect(() => {
     if (!message || !open) return
@@ -23,7 +23,7 @@ export const NativeDialog: React.ElementType<INativeDialogProps> = (props) => {
         if (typeof onSubmit === 'function' && result) {
           onSubmit(result)
         }
-        if (typeof onClose === 'function' && !result) onClose()
+        if (typeof onCancel === 'function' && !result) onCancel()
         break
       }
       case DialogTypes.Prompt: {
@@ -31,13 +31,13 @@ export const NativeDialog: React.ElementType<INativeDialogProps> = (props) => {
         if (typeof onSubmit === 'function' && result) {
           onSubmit(result)
         }
-        if (typeof onClose === 'function' && !result) onClose()
+        if (typeof onCancel === 'function' && !result) onCancel()
         break
       }
       default:
     }
     // setOpen(false)
-  }, [message, type, defaultText, onSubmit, onClose])
+  }, [message, type, defaultText, onSubmit, onCancel])
 
   return null
 }

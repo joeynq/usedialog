@@ -1,10 +1,10 @@
 {
-  "name": "@datnq/use-dialog",
-  "version": "1.0.0",
+  "name": "@datnq/usedialog",
+  "version": "0.0.1",
   "description": "Made with create-react-library",
   "author": "datnq",
   "license": "MIT",
-  "repository": "datnq/use-dialog",
+  "repository": "datnq/usedialog",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",

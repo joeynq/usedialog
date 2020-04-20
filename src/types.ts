@@ -8,12 +8,13 @@ export const enum DialogTypes {
 export interface IDialogProps {
   message: string | React.ElementType
   defaultText?: string
-  type?: ['default', 'alert', 'confirm', 'prompt'] | DialogTypes
+  type: ['default', 'alert', 'confirm', 'prompt'] | DialogTypes
   title?: string | React.ElementType
-  style?: { [key: string]: React.CSSProperties }
-  open?: boolean
+  open: boolean
+  submitLabel: string | React.ElementType
+  cancelLabel?: string | React.ElementType
   onSubmit?: (value: any) => void
-  onClose?: () => void
+  onCancel?: () => void
 }
 
 export interface IDialogContextProps {
@@ -29,4 +30,6 @@ export interface IDialogContextProps {
 export interface IDialogProviderProps {
   children: React.ReactChildren
   dialogComponent: React.ElementType<Partial<IDialogProps>>
+  submitLabel?: string | React.ElementType
+  cancelLabel?: string | React.ElementType
 }

@@ -11,7 +11,12 @@ export const DialogContext = React.createContext<Partial<IDialogContextProps>>(
   {}
 )
 
-export const DialogProvider: React.FC<IDialogProviderProps> = (props) => {
+export const DialogProvider: React.FC<IDialogProviderProps> = ({
+  children,
+  dialogComponent,
+  submitLabel = 'OK',
+  cancelLabel = 'Cancel',
+}) => {
   const [dialogState, setDialogState] = React.useState<Partial<IDialogProps>>()
   const awaitingPromiseRef = React.useRef<any>()
 
@@ -27,6 +32,7 @@ export const DialogProvider: React.FC<IDialogProviderProps> = (props) => {
       message,
       type: DialogTypes.Alert,
       open: true,
+      submitLabel,
     }
     return dialog(alertOptions)
   }
@@ -35,6 +41,8 @@ export const DialogProvider: React.FC<IDialogProviderProps> = (props) => {
     const confirmOptions = {
       type: DialogTypes.Confirm,
       message,
+      submitLabel,
+      cancelLabel,
       open: true,
     }
     return dialog(confirmOptions)
@@ -48,12 +56,14 @@ export const DialogProvider: React.FC<IDialogProviderProps> = (props) => {
       type: DialogTypes.Prompt,
       message,
       defaultText,
+      submitLabel,
+      cancelLabel,
       open: true,
     }
     return dialog(promptOptions)
   }
 
-  const handleClose = () => {
+  const handleCancel = () => {
     awaitingPromiseRef.current && awaitingPromiseRef.current.reject()
     setDialogState(undefined)
   }
@@ -63,15 +73,15 @@ export const DialogProvider: React.FC<IDialogProviderProps> = (props) => {
     setDialogState(undefined)
   }
 
-  const DialogComponent = props.dialogComponent || NativeDialog
+  const DialogComponent = dialogComponent || NativeDialog
 
   return (
     <DialogContext.Provider value={{ alert, confirm, dialog, prompt }}>
-      {props.children}
+      {children}
       <DialogComponent
         open={!!dialogState}
         onSubmit={handleSubmit}
-        onClose={handleClose}
+        onCancel={handleCancel}
         {...dialogState}
       />
     </DialogContext.Provider>

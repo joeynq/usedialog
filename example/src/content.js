@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { useDialog } from 'use-dialog'
+import { useDialog } from '@datnq/usedialog'
 
 export default () => {
   const { alert, confirm, prompt } = useDialog()
@@ -10,7 +10,7 @@ export default () => {
       e.preventDefault()
       alert('Alert clicked!')
         .then(setValue)
-        .catch(() => setValue('Cancel!'))
+        .catch(() => setValue(false))
     },
     [alert]
   )
@@ -19,27 +19,27 @@ export default () => {
       e.preventDefault()
       confirm('Confirm clicked!')
         .then(setValue)
-        .catch(() => setValue('Cancel!'))
+        .catch(() => setValue(false))
     },
     [confirm]
   )
   const promptClick = useCallback(
     (e) => {
       e.preventDefault()
-      prompt('Prompt clicked!')
+      prompt('Prompt clicked!', 'This is default value')
         .then(setValue)
-        .catch(() => setValue('Cancel!'))
+        .catch(() => setValue(false))
     },
     [prompt]
   )
   return (
     <div>
-      <div>
+      <p>
         <button onClick={alertClick}>Alert</button>
         <button onClick={confirmClick}>Confirm</button>
         <button onClick={promptClick}>Prompt</button>
-      </div>
-      <div>{JSON.stringify(value)}</div>
+      </p>
+      <p>&nbsp;{JSON.stringify(value)}</p>
     </div>
   )
 }
