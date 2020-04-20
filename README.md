@@ -26,10 +26,14 @@ class ExampleApp extends Component {
     return (
       <DialogProvider
         dialogComponent={
-          CustomDialog
-        } /* Use native dialog if dialogComponent is not provided */
-        submitLabel='Yes' /* Override submit button label with string | ReactElement. Default = OK */
-        cancelLabel='No' /* Override cancel button label with string | ReactElement. Default = Cancel */
+          CustomDialog /* Use native dialog if dialogComponent is not provided */
+        }
+        submitLabel={
+          'Yes' /* Override submit button label with string | ReactElement. Default = OK */
+        }
+        cancelLabel={
+          'No' /* Override cancel button label with string | ReactElement. Default = Cancel */
+        }
       >
         {props.children}
       </DialogProvider>
