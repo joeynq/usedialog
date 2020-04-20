@@ -26,7 +26,6 @@ const CustomDialog = ({
   }, [])
 
   const submit = useCallback(() => {
-    console.log(value)
     onSubmit(type !== 'prompt' || value)
   }, [onSubmit, type, value])
 
