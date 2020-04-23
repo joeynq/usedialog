@@ -28,7 +28,7 @@ export interface IDialogContextProps {
 }
 
 export interface IDialogProviderProps {
-  dialogComponent: React.ElementType<Partial<IDialogProps>>
+  dialogComponent?: React.ElementType<Partial<IDialogProps>>
   submitLabel?: string | React.ElementType
   cancelLabel?: string | React.ElementType
 }
