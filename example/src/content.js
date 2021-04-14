@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useDialog } from '@datnq/usedialog'
 
-export default () => {
+const Content = () => {
   const { alert, confirm, prompt } = useDialog()
   const [value, setValue] = useState()
 
@@ -43,3 +43,5 @@ export default () => {
     </div>
   )
 }
+
+export default Content

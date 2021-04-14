@@ -7,7 +7,7 @@
     "@datnq/usedialog": "link:..",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
-    "react-modal": "^3.11.2",
+    "react-modal": "^3.13.1",
     "react-scripts": "link:../node_modules/react-scripts",
     "react-syntax-highlighter": "^12.2.1"
   },
